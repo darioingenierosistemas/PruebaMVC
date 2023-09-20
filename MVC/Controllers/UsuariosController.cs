@@ -33,20 +33,21 @@ namespace MVC.Controllers
             return RedirectToAction("Listar");
         }
 
+        [HttpGet]
         public async Task<IActionResult> Editar(int id)
         {
             var usuario = await _usuariosDAO.ObtenerPorIdAsync(id);
             return View("Crear", usuario);
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> Editar(Usuarios usuario)
         {
             await _usuariosDAO.EditarAsync(usuario);
             return RedirectToAction("Listar");
         }
 
-        [HttpDelete]
+        [HttpGet]
         public async Task<IActionResult> Borrar(int id)
         {
             await _usuariosDAO.EliminarAsync(id);
